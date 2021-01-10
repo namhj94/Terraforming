@@ -1,7 +1,8 @@
 # Azure in Terraform
 ## Usage
 1. git clone this repo
-2. terraform init
+2. az login
+3. terraform init
 ## Provider
 ### terraform block
 테라폼과 프로바이더의 버전을 따로 관리할 수 있음
