@@ -4,7 +4,7 @@ variable "username" {
 }
 variable "password" {
   description = "password"
-  default = "dkagh1.dkagh1."
+  default = "PASSWORD"
 }
 variable "location" {
   description = "location"

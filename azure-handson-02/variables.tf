@@ -8,5 +8,5 @@ variable "location" {
 }
 variable "admin_password" {
   description = "vmss admin password"
-  default = "dkagh1.dkagh1."
+  default = "PASSWORD"
 }
