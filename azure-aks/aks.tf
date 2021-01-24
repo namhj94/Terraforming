@@ -2,12 +2,28 @@ resource "azurerm_resource_group" "terraform_rg" {
   name     = "terraform-rg"
   location = "koreacentral"
 }
+module "network" {
+  source              = "Azure/network/azurerm"
+  version             = "3.2.1"
+  vnet_name           = "aks-vnet"
+  resource_group_name = azurerm_resource_group.terraform_rg.name
+  address_space       = "10.0.0.0/8"
+  subnet_prefixes     = ["10.240.0.0/16", "10.1.0.0/16"]
+  subnet_names        = ["aksSubnet00", "subnet01"]
+  depends_on          = [azurerm_resource_group.terraform_rg]
+}
+data "azurerm_subnet" "aks_subnet" {
+  name                 = "aksSubnet00"
+  virtual_network_name = "aks-vnet"
+  resource_group_name  = azurerm_resource_group.terraform_rg.name
+  depends_on           = [module.network]
+}
 resource "azurerm_kubernetes_cluster" "hyukjun_cluster" {
   # Basics
   name                = "hyukjun-cluster"
   location            = azurerm_resource_group.terraform_rg.location
   resource_group_name = azurerm_resource_group.terraform_rg.name
-  kubernetes_version  = "1.19.1"
+  kubernetes_version  = "1.19.3"
 
   # Node pools
   default_node_pool {
@@ -15,7 +31,7 @@ resource "azurerm_kubernetes_cluster" "hyukjun_cluster" {
     node_count = 3
     vm_size    = "Standard_DS2_v2"
     # For Azure CNI Network Plugin
-    vnet_subnet_id = azurerm_subnet.aks_vnet_subnet.id
+    vnet_subnet_id = data.azurerm_subnet.aks_subnet.id
     # availability_zones
     # koreacentral not supported
     # Cluster AutoScaler
@@ -58,12 +74,4 @@ resource "azurerm_kubernetes_cluster" "hyukjun_cluster" {
   tags = {
     Environment = "Test"
   }
-}
-
-output "client_certificate" {
-  value = azurerm_kubernetes_cluster.hyukjun_cluster.kube_config.0.client_certificate
-}
-
-output "kube_config" {
-  value = azurerm_kubernetes_cluster.hyukjun_cluster.kube_config_raw
 }
