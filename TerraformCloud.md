@@ -1,4 +1,11 @@
 # Terraform Cloud
+## Login to Terraform Cloud
+### CLI Login
+terraform login을 통해 로그인 할 경우 미리 생성한 User의 Token값을 입력해야 함<br>
+입력된 Token값은 로컬 환경에 저장되며, 앞으로 사용되는 테라폼 커맨드를 위해 사용됨<br>
+Path:  ~/.terraform.d/credentials.tfrc.json <br>
+결국, 테라폼 로그인 후 테라폼 커맨드를 사용할 때마다 이 곳에 저장된 토큰을 사용해서 테라폼 클라우드를 컨트롤 할 수 있게됨
+
 ## Execution mode
 ### Remote
 Terraform 실행환경 -> 테라폼 클라우드 <br>
