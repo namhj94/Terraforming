@@ -1,17 +1,22 @@
 terraform {
+  // 테라폼 버전 제한
+  required_version = "~> 0.14.1"
+  
+  //프로바이더 버전 제한
   required_providers {
     azurerm = {
       source = "hashicorp/azurerm"
-      version = ">= 2.26"
+      version = ">= 2.46"
     }
   }
   
-  # backend "remote" {
-  #   organization = "ORGNAME"
-  #   workspaces {
-  #     name = "WORKSPACENAME"
-  #   }
-  # }
+  // 원격 백앤드 정보 설정
+   backend "remote" {
+     organization = "org name"
+     workspaces {
+       name = "workspace name"
+     }
+   }
 }
 
 provider "azurerm" {
@@ -30,15 +35,6 @@ resource "azurerm_virtual_network" "vnet" {
     location            = var.location
     resource_group_name = azurerm_resource_group.rg.name
 }
-# variable "admin_username" {
-#     type = string
-#     description = "Administrator user name for virtual machine"
-# }
-
-# variable "admin_password" {
-#     type = string
-#     description = "Password must meet Azure complexity requirements"
-# }
 
 # Create subnet
 resource "azurerm_subnet" "subnet" {
@@ -66,7 +62,7 @@ resource "azurerm_network_security_group" "nsg" {
   # 리소스 라이프 사이클 관리(삭제방지, 변경무시)
   lifecycle {
       # prevent_destroy = true
-      ignore_changes = ["security_rule"]
+      # ignore_changes = ["security_rule"]
   }
   security_rule {
     name                       = "SSH"
@@ -76,6 +72,17 @@ resource "azurerm_network_security_group" "nsg" {
     protocol                   = "Tcp"
     source_port_range          = "*"
     destination_port_range     = "22"
+    source_address_prefix      = "*"
+    destination_address_prefix = "*"
+  }
+    security_rule {
+    name                       = "RDP"
+    priority                   = 1002
+    direction                  = "Inbound"
+    access                     = "Allow"
+    protocol                   = "Tcp"
+    source_port_range          = "*"
+    destination_port_range     = "3389"
     source_address_prefix      = "*"
     destination_address_prefix = "*"
   }
