@@ -37,6 +37,31 @@ User Setting -> Token
 2. terraform cloud에 로그인 한 뒤, remote모드라면 terraform cloud의 테라폼 버전에 맞춰 configuration의 테라폼 버전 셋팅
 3. terraform plan
 ```
+## VCS 연결
+### 방법 1. Github에 OAuth Application 등록(VCS Provider 지정)
+Scope: Oraganization에 등록 후 Workspace에서 repo로 분할
+<p>Terraform Cloud를 Github.com에 OAuth Application으로 등록한 뒤, 특정 Repository를 특정 Workspace에서 사용하도록 설정 가능(특정 repo의 특정 directory 설정 또한 가능)</p>
+
+[등록방법]
+  1. ORG선택 -> Settings -> VCS Providers 탭에서 기이드 되는 내용을 바탕으로 등록 혹은 Workspace -> Settings -> Version Control -> VCS Driven -> Github.com(Custom) 선택 -> ORG Settings로 화면 전환되고 등록 진행
+  2. Workspace ->  Version Control -> 미리 OAuth 등록한 Github.com 선택 -> Repository선택 -> [선택]테라폼 Workdirectory 지정
+  3. Github.com -> (User)Settings -> Developer settings -> OAuth Apps 에서 확인가능
+
+![TerraformOAuthAppRegistration](./images/Terraform_OAuth_App_Registration.png)
+![github_oauth](./images/github_oauth.png)
+
+### 방법 2. Github에  일반 Application 등록
+Scope: 특정 Workspace로만 바로 진입 가능
+<p>특정 Workspace 내에서 Version Control 등록 시 Github.com을 선택하면 일반 Application 등록 진행</p>
+
+[등록방법]
+  1. Workspace -> Settings -> Version Control -> Github.com 선택(Custom아님)
+  2. Connection 진행시 특정 repo 선택 가능
+  3. [선택] Terraform Working Directory 지정 
+  4. Github.com -> (User)Settings -> Application 에서 확인 가능
+
+![git_app2](./images/git_app2.png)
+![git_app](./images/git_app.png)
 
 ## 참고사항
 ### team & governance 이상 구독 사용시 특징
