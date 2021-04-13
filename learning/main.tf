@@ -12,9 +12,9 @@ terraform {
   
   // 원격 백앤드 정보 설정
    backend "remote" {
-     organization = "org name"
+     organization = "hyukjun-test"
      workspaces {
-       name = "workspace name"
+       name = "hyukjun-test-work2"
      }
    }
 }
@@ -31,7 +31,7 @@ resource "azurerm_resource_group" "rg" {
 # Create a virtual network
 resource "azurerm_virtual_network" "vnet" {
     name                = "myTFVnet"
-    address_space       = ["10.0.0.0/16"]
+    address_space       = ["192.168.0.0/16"]
     location            = var.location
     resource_group_name = azurerm_resource_group.rg.name
 }
@@ -41,7 +41,7 @@ resource "azurerm_subnet" "subnet" {
   name                 = "myTFSubnet"
   resource_group_name  = azurerm_resource_group.rg.name
   virtual_network_name = azurerm_virtual_network.vnet.name
-  address_prefixes     = ["10.0.1.0/24"]
+  address_prefixes     = ["192.168.1.0/24"]
 }
 
 # Create public IP
@@ -83,6 +83,17 @@ resource "azurerm_network_security_group" "nsg" {
     protocol                   = "Tcp"
     source_port_range          = "*"
     destination_port_range     = "3389"
+    source_address_prefix      = "*"
+    destination_address_prefix = "*"
+  }
+  security_rule {
+    name                       = "HTTP"
+    priority                   = 1003
+    direction                  = "Inbound"
+    access                     = "Allow"
+    protocol                   = "Tcp"
+    source_port_range          = "*"
+    destination_port_range     = "80"
     source_address_prefix      = "*"
     destination_address_prefix = "*"
   }
