@@ -1,6 +1,6 @@
 terraform {
   // 테라폼 버전 제한
-  required_version = "~> 0.14.1"
+  # required_version = "~> 0.14.1"
   
   //프로바이더 버전 제한
   required_providers {
@@ -11,12 +11,12 @@ terraform {
   }
   
   // 원격 백앤드 정보 설정
-   backend "remote" {
-     organization = "hyukjun-test"
-     workspaces {
-       name = "hyukjun-test-work2"
-     }
-   }
+  #  backend "remote" {
+  #    organization = "hyukjun-test"
+  #    workspaces {
+  #      name = "hyukjun-test-work2"
+  #    }
+  #  }
 }
 
 provider "azurerm" {
