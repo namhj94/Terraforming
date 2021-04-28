@@ -1,3 +1,4 @@
-resourcegroup = "hyukjun-terraform2"
-location = "eastus"
-vm_passwd = "PASSWORD"
+resourcegroup = "TF-rg-01"
+location = "koreacentral"
+admin_username = ""
+admin_password = ""
