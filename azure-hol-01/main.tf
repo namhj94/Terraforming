@@ -9,7 +9,7 @@ terraform {
     }
   }
   
-  // 원격 백앤드 정보 설정
+  # 원격 백앤드 정보 설정
   #  backend "remote" {
   #    organization = "hyukjun-test"
   #    workspaces {

@@ -3,7 +3,7 @@ variable "resourcegroup" {
     default = "TF-rg"
 }
 variable "location" {
-    type = "string"
+    type = string
     default = "koreacentral"
 }
 variable "prefix"{
