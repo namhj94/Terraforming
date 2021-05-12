@@ -1,5 +1,5 @@
 terraform {
-  # required_version = "~> 0.14.1"
+  required_version = "~> 0.14.1"
   
   # 프로바이더 버전
   required_providers {
@@ -10,18 +10,17 @@ terraform {
   }
   
   # 원격 백앤드 정보 설정
-  #  backend "remote" {
-  #    organization = "hyukjun-test"
-  #    workspaces {
-  #      name = "hyukjun-test-work2"
-  #    }
-  #  }
+   backend "remote" {
+     organization = "hyukjun-demo"
+     workspaces {
+       name = "azure-infra-01"
+     }
+   }
 }
 
 # Configure the Azure Provider
 provider "azurerm" {
   # whilst the `version` attribute is optional, we recommend pinning to a given version of the Provider
-  version = ">= 2.46.0"
   features {}
 }
 
