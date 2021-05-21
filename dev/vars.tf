@@ -1,3 +1,4 @@
+# main, network variables
 variable "location" {
     default = "koreacentral"
 }
@@ -9,5 +10,12 @@ variable "prefix" {
     description = "environment name"
 }
 variable "src_ip" {
+    default = ""
+}
+#Compute
+variable "admin_username" {
+    default = ""
+}
+variable "admin_password" {
     default = ""
 }
