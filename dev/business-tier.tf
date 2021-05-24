@@ -12,7 +12,7 @@ resource "azurerm_network_interface" "dev_business_nic_00" {
 
 # Avset
 resource "azurerm_availability_set" "dev_business_avset" {
-  name                = "dev-business-avset"
+  name                = "${var.prefix}-business-avset"
   location            = azurerm_resource_group.web_rg.location
   resource_group_name = azurerm_resource_group.web_rg.name
   

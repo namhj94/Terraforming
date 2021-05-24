@@ -8,7 +8,7 @@
 5. 포털에서 해당 Service Principal 소유자 등록
 ```
 ### 2. Terraform Cloud Workspace 생성
-테라폼 클라우드 포털 작업
+테라폼 클라우드 포털 작업 or 코드에 선언
 ### 3. Terraform Cloud 환경변수 설정 & 로그인 토큰 준비
 1. 환경변수 설정
 ```

@@ -1,21 +1,23 @@
 # main, network variables
 variable "location" {
+    description = "region info"
     default = "koreacentral"
 }
 variable "resourcegroup" {
+    description = "resource group name"
     default = "TF-dev"
 }
 variable "prefix" {
-    default = "dev"
     description = "environment name"
+    default = "dev"
 }
 variable "src_ip" {
-    default = ""
+    description = "company public ip"
 }
 #Compute
 variable "admin_username" {
-    default = ""
+    description = "vm host name"
 }
 variable "admin_password" {
-    default = ""
+    description = "vm host password"
 }
