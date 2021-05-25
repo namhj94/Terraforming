@@ -47,8 +47,8 @@ Scope: Oraganization에 등록 후 Workspace에서 repo로 분할
   2. Workspace ->  Version Control -> 미리 OAuth 등록한 Github.com 선택 -> Repository선택 -> [선택]테라폼 Workdirectory 지정
   3. Github.com -> (User)Settings -> Developer settings -> OAuth Apps 에서 확인가능
 
-![TerraformOAuthAppRegistration](./images/Terraform_OAuth_App_Registration.png)
-![github_oauth](./images/github_oauth.png)
+![TerraformOAuthAppRegistration](../images/Terraform_OAuth_App_Registration.png)
+![github_oauth](../images/github_oauth.png)
 
 ### 방법 2. Github에  일반 Application 등록
 Scope: 특정 Workspace로만 바로 진입 가능
@@ -60,8 +60,8 @@ Scope: 특정 Workspace로만 바로 진입 가능
   3. [선택] Terraform Working Directory 지정 
   4. Github.com -> (User)Settings -> Application 에서 확인 가능
 
-![git_app2](./images/git_app2.png)
-![git_app](./images/git_app.png)
+![git_app2](../images/git_app2.png)
+![git_app](../images/git_app.png)
 
 ## 참고사항
 ### team & governance 이상 구독 사용시 특징
