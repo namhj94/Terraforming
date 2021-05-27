@@ -4,14 +4,8 @@ variable "resource_group_name" {
 variable "location" {
   default = "koreacentral"
 }
-variable "hostname" {
-}
-variable "size" {
-}
-variable "admin_username" {
-}
-variable "admin_password" {
-}
+
+# network
 variable "vnet_name" {
 }
 variable "address_space" {
@@ -20,7 +14,15 @@ variable "subnet_name" {
 }
 variable "subnet_address_prefix" {
 }
-variable "nsg_name" {
+
+# vm
+variable "hostname" {
+}
+variable "size" {
+}
+variable "admin_username" {
+}
+variable "admin_password" {
 }
 
 variable "os_disk_sku" {
@@ -36,4 +38,19 @@ variable "tag" {
 variable "nic_name" {
 }
 
+#nsg
+variable "nsg_name" {
+}
+variable "nsg_rule_name" {
+}
+variable "nsg_priority" {
+}
+variable "nsg_destination_port_range" {
+}
 
+# public ip
+variable "pip_name" {
+}
+variable "allocation_method" {
+  default = "Dynamic"
+}

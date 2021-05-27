@@ -11,6 +11,7 @@ resource "azurerm_network_interface" "vm" {
     name                          = "internal"
     subnet_id                     = var.subnet_id
     private_ip_address_allocation = "Dynamic"
+    public_ip_address_id = var.public_ip_address_id
   }
 }
 

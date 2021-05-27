@@ -16,6 +16,3 @@ variable "subnet_name" {
 variable "subnet_address_prefix" {
   description = "subnet adress prefix"
 }
-variable "nsg_name" {
-  description = "nsg name"
-}

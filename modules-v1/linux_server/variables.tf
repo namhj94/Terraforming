@@ -36,4 +36,5 @@ variable "subnet_id" {
 variable "nic_name" {
   description = "nic name"
 }
-
+variable "public_ip_address_id" {
+}
