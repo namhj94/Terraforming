@@ -89,7 +89,7 @@ os_disk_sku    = "Standard_LRS"
 publisher      = "Canonical"
 offer          = "UbuntuServer"
 sku            = "18.04-LTS"
-os_tag            = "latest"
+os_tag         = "latest"
 nic_name       = "linux-server-01-nic"
 
 # pip
