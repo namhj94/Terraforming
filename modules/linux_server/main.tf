@@ -11,7 +11,7 @@ resource "azurerm_network_interface" "vm" {
     name                          = var.ip_configuration_name
     subnet_id                     = var.subnet_id
     private_ip_address_allocation = var.private_ip_address_allocation
-    public_ip_address_id = var.public_ip_address_id
+    public_ip_address_id          = var.public_ip_address_id
   }
 }
 
@@ -35,7 +35,7 @@ resource "azurerm_linux_virtual_machine" "vm" {
     publisher = var.publisher
     offer     = var.offer
     sku       = var.sku
-    version   = var.tag
+    version   = var.os_tag
   }
 
   disable_password_authentication = false

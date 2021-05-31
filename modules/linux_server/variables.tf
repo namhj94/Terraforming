@@ -1,73 +1,73 @@
 # Required
 variable "resource_group_name" {
-  type = string
+  type        = string
   description = "rg name"
 }
 variable "location" {
-  type = string
+  type        = string
   description = "location"
 }
 variable "hostname" {
-  type = string
+  type        = string
   description = "Computer name, host name"
 }
 variable "size" {
   description = "vm size"
 }
 variable "admin_username" {
-  type = string
+  type        = string
   description = "admin user name"
 }
 variable "admin_password" {
-  type = string
+  type        = string
   description = "admin user password"
 }
 variable "os_disk_sku" {
-  type = string
+  type        = string
   description = "os disk sku"
 }
 variable "publisher" {
-  type = string
+  type        = string
   description = "image publisher"
 }
 variable "offer" {
-  type = string
+  type        = string
   description = "image offer"
 }
 variable "sku" {
-  type = string
+  type        = string
   description = "image distro"
 }
-variable "tag" {
-  type = string
+variable "os_tag" {
+  type        = string
   description = "image version"
 }
 variable "subnet_id" {
-  type = string
+  type        = string
   description = "subnet id"
 }
 variable "nic_name" {
-  type = string
+  type        = string
   description = "nic name"
 }
 variable "public_ip_address_id" {
-  type = string
+  type        = string
   description = "Public ip address id"
 }
 
 # Optional
 variable "ip_configuration_name" {
-  type = string
+  type        = string
   description = "IP Configuration Name"
-  default = "Internal"
+  default     = "Internal"
 }
 variable "private_ip_address_allocation" {
-  type = string
+  type        = string
   description = "Private IP Allocation Method"
-  default = "Dynamic"
+  default     = "Dynamic"
 }
 variable "os_disk_caching" {
-  type = string
+  type        = string
   description = "OS disk Caching"
-  default = "ReadWrite"
+  default     = "ReadWrite"
 }

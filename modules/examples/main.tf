@@ -47,12 +47,12 @@ module "nsg" {
 }
 
 module "public-ip" {
-  source              = "../public-ip"
-  resource_group_name = azurerm_resource_group.rg.name
-  location            = var.location
-  pip_name            = var.pip_name
-  pip_allocation_method   = var.allocation_method
-  
+  source                = "../public-ip"
+  resource_group_name   = azurerm_resource_group.rg.name
+  location              = var.location
+  pip_name              = var.pip_name
+  pip_allocation_method = var.allocation_method
+
   depends_on = [
     azurerm_resource_group.rg
   ]
@@ -70,7 +70,7 @@ module "linux" {
   publisher            = var.publisher
   offer                = var.offer
   sku                  = var.sku
-  tag                  = var.tag
+  os_tag               = var.os_tag
   subnet_id            = module.network.subnet_id
   nic_name             = var.nic_name
   public_ip_address_id = module.public-ip.public_ip_address_id

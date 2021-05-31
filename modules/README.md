@@ -14,7 +14,7 @@
         publisher            
         offer                
         sku                  
-        tag                  
+        os_tag                  
         subnet_id            
         nic_name             
         public_ip_address_id 
@@ -89,7 +89,7 @@ os_disk_sku    = "Standard_LRS"
 publisher      = "Canonical"
 offer          = "UbuntuServer"
 sku            = "18.04-LTS"
-tag            = "latest"
+os_tag            = "latest"
 nic_name       = "linux-server-01-nic"
 
 # pip
