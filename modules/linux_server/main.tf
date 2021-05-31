@@ -8,9 +8,9 @@ resource "azurerm_network_interface" "vm" {
   location            = coalesce(var.location, data.azurerm_resource_group.vm.location)
 
   ip_configuration {
-    name                          = "internal"
+    name                          = var.ip_configuration_name
     subnet_id                     = var.subnet_id
-    private_ip_address_allocation = "Dynamic"
+    private_ip_address_allocation = var.private_ip_address_allocation
     public_ip_address_id = var.public_ip_address_id
   }
 }
@@ -27,7 +27,7 @@ resource "azurerm_linux_virtual_machine" "vm" {
   ]
 
   os_disk {
-    caching              = "ReadWrite"
+    caching              = var.os_disk_caching
     storage_account_type = var.os_disk_sku
   }
 
@@ -39,6 +39,4 @@ resource "azurerm_linux_virtual_machine" "vm" {
   }
 
   disable_password_authentication = false
-  #boot_diagnostics
-  #admin_ssh_key
 }
