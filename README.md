@@ -3,6 +3,13 @@
 ### 환경
 - Azure Public Cloud
 - Terraform OSS & Terraform Cloud
+---
+### 정리
+- [Develop Azure Infra Modules](modules)
+- [Terraform Cloud](documentation/terraform_cloud_usage.md)
+- [Terraform Basics](documentation/terraform_basic.md)
+- [Azure Kubernetes Service](documentation/aks.md)
+---
 ### Description
 - Develop Azure Infra Modules
 - Azure infra architectures
@@ -13,10 +20,6 @@
     - metric-server
     - cluster autoscaler
     - ArgoCD
-### 정리
-- [Develop Azure Infra Modules](modules-v1)
-- [Terraform Cloud](documentation/terraform_cloud_usage.md)
-- [Terraform Basics](documentation/terraform_basic.md)
-- [Azure Kubernetes Service](documentation/aks.md)
+---
 ### Official Docs
 - [Terraform Registry - AzureRM](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs)
