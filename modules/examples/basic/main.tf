@@ -18,7 +18,7 @@ resource "azurerm_resource_group" "rg" {
 }
 
 module "network" {
-  source                = "../network"
+  source                = "../../network"
   resource_group_name   = azurerm_resource_group.rg.name
   location              = var.location
   vnet_name             = var.vnet_name
@@ -31,7 +31,7 @@ module "network" {
   ]
 }
 module "nsg" {
-  source              = "../nsg"
+  source              = "../../nsg"
   resource_group_name = azurerm_resource_group.rg.name
   location            = var.location
   nsg_name            = var.nsg_name
@@ -47,7 +47,7 @@ module "nsg" {
 }
 
 module "public-ip" {
-  source                = "../public-ip"
+  source                = "../../public-ip"
   resource_group_name   = azurerm_resource_group.rg.name
   location              = var.location
   pip_name              = var.pip_name
@@ -59,7 +59,7 @@ module "public-ip" {
 }
 
 module "linux" {
-  source               = "../linux_server"
+  source               = "../../linux_server"
   resource_group_name  = azurerm_resource_group.rg.name
   location             = var.location
   hostname             = var.hostname
