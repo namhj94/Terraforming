@@ -69,23 +69,6 @@ variable "nic_name" {
   description = "NIC Name"
 }
 
-#nsg
-variable "nsg_name" {
-  type        = string
-  description = "NSG Name"
-}
-variable "nsg_rule_name" {
-  type        = string
-  description = "New NSG Rule Name"
-}
-variable "nsg_priority" {
-  type        = number
-  description = "NSG Priority"
-}
-variable "nsg_destination_port_range" {
-  type        = string
-  description = "NSG Destination Port"
-}
 
 # public ip
 variable "pip_name" {

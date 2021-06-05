@@ -42,10 +42,16 @@
         resource_group_name
         location
         nsg_name
-        rule_name
-        priority
-        destination_port_range
-        subnet_id   
+        rules
+        ```
+        ```
+        rules
+        "[name, priority, direction, access, protocol, ,source_address_prefix/es, source_port_range, destination_address_prefix/es, destination_port_range,source_application_security_group_ids]"
+
+        서비스 태그 및 *(Any)는 source_address_prefix/destination_address_prefix 에 선언
+        복수 주소는 source_address_prefixes/destination_address_prefixes 에 list로 선언
+
+        *포트가 여러개 일 경우 source_port_range/destination_port_range 에 string 형식으로("3000, 3001") 선언
         ```
     - Optional Values
 - public ip
@@ -74,17 +80,11 @@ address_space         = ["10.0.0.0/16"]
 subnet_name           = "subnet01"
 subnet_address_prefix = ["10.0.0.0/24"]
 
-# nsg
-nsg_name                   = "nsg01"
-nsg_rule_name              = "ssh"
-nsg_priority               = "100"
-nsg_destination_port_range = "22"
-
 # vm
 hostname       = "testvm01"
 size           = "Standard_F2"
-admin_username = "USER_NAME"
-admin_password = "PASSWORD"
+admin_username = "azureuser"
+admin_password = "dkagh1.dkagh1."
 os_disk_sku    = "Standard_LRS"
 publisher      = "Canonical"
 offer          = "UbuntuServer"
