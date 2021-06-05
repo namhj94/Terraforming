@@ -83,8 +83,8 @@ subnet_address_prefix = ["10.0.0.0/24"]
 # vm
 hostname       = "testvm01"
 size           = "Standard_F2"
-admin_username = "azureuser"
-admin_password = "dkagh1.dkagh1."
+admin_username = "USERNAME"
+admin_password = "PASSWORD"
 os_disk_sku    = "Standard_LRS"
 publisher      = "Canonical"
 offer          = "UbuntuServer"
