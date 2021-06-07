@@ -21,10 +21,10 @@ module "network" {
   source                = "../../network"
   resource_group_name   = azurerm_resource_group.rg.name
   location              = var.location
-  vnet_name             = var.vnet_name
-  address_space         = var.address_space
-  subnet_name           = var.subnet_name
-  subnet_address_prefix = var.subnet_address_prefix
+  vnet_name             = "tf-vnet"
+  address_space         = ["10.0.0.0/16"]
+  subnet_name           = "tf-subnet-01"
+  subnet_address_prefix = ["10.0.0.0/24"]
 
   depends_on = [
     azurerm_resource_group.rg
@@ -34,7 +34,7 @@ module "nsg" {
   source              = "../../nsg"
   resource_group_name = azurerm_resource_group.rg.name
   location            = var.location
-  nsg_name            = "tf-nsg-test"
+  nsg_name            = "tf-nsg"
 
   rules = [
     {
@@ -81,11 +81,22 @@ module "nsg" {
   ]
 }
 
-module "public-ip" {
+module "linux_public_ip" {
   source                = "../../public-ip"
   resource_group_name   = azurerm_resource_group.rg.name
   location              = var.location
-  pip_name              = var.pip_name
+  pip_name              = "linux-server-pip"
+  pip_allocation_method = var.allocation_method
+
+  depends_on = [
+    azurerm_resource_group.rg
+  ]
+}
+module "window_public_ip" {
+  source                = "../../public-ip"
+  resource_group_name   = azurerm_resource_group.rg.name
+  location              = var.location
+  pip_name              = "window-server-pip"
   pip_allocation_method = var.allocation_method
 
   depends_on = [
@@ -97,18 +108,38 @@ module "linux" {
   source               = "../../linux_server"
   resource_group_name  = azurerm_resource_group.rg.name
   location             = var.location
-  hostname             = var.hostname
-  size                 = var.size
+  hostname             = "mspadmin"
+  size                 = "Standard_F2"
   admin_username       = var.admin_username
   admin_password       = var.admin_password
-  os_disk_sku          = var.os_disk_sku
-  publisher            = var.publisher
-  offer                = var.offer
-  sku                  = var.sku
-  os_tag               = var.os_tag
+  os_disk_sku          = "Standard_LRS"
+  publisher            = "Canonical"
+  offer                = "UbuntuServer"
+  sku                  = "18.04-LTS"
+  os_tag               = "latest"
   subnet_id            = module.network.subnet_id
-  nic_name             = var.nic_name
-  public_ip_address_id = module.public-ip.public_ip_address_id
+  nic_name             = "linux-server-nic"
+  public_ip_address_id = module.linux_public_ip.public_ip_address_id
+  depends_on = [
+    azurerm_resource_group.rg
+  ]
+}
+module "window" {
+  source               = "../../window_server"
+  resource_group_name  = azurerm_resource_group.rg.name
+  location             = var.location
+  hostname             = "windows-vm"
+  size                 = "Standard_F2"
+  admin_username       = var.admin_username
+  admin_password       = var.admin_password
+  os_disk_sku          = "Standard_LRS"
+  publisher            = "MicrosoftWindowsServer"
+  offer                = "WindowsServer"
+  sku                  = "2019-Datacenter"
+  os_tag               = "latest"
+  subnet_id            = module.network.subnet_id
+  nic_name             = "window-server-nic"
+  public_ip_address_id = module.window_public_ip.public_ip_address_id
   depends_on = [
     azurerm_resource_group.rg
   ]
