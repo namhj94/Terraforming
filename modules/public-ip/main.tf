@@ -7,5 +7,4 @@ resource "azurerm_public_ip" "pip" {
   location            = coalesce(var.location, data.azurerm_resource_group.pip.location)
 
   allocation_method = var.pip_allocation_method
-
 }

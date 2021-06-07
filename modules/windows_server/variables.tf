@@ -7,12 +7,24 @@ variable "location" {
   type        = string
   description = "location"
 }
+
+# nic
+variable "nic_name" {
+  type        = string
+  description = "nic name"
+}
+variable "subnet_id" {
+  type        = string
+  description = "subnet id"
+}
+
+# vm
 variable "hostname" {
   type        = string
   description = "Computer name, host name"
 }
 variable "size" {
-  description = "linux vm size"
+  description = "vm size"
 }
 variable "admin_username" {
   type        = string
@@ -42,14 +54,7 @@ variable "os_tag" {
   type        = string
   description = "image version"
 }
-variable "subnet_id" {
-  type        = string
-  description = "subnet id"
-}
-variable "nic_name" {
-  type        = string
-  description = "nic name"
-}
+
 
 # Optional
 variable "ip_configuration_name" {

@@ -74,25 +74,10 @@
 resource_group_name = "TF-Module"
 location            = "koreacentral"
 
-# network
-vnet_name             = "vnet01"
-address_space         = ["10.0.0.0/16"]
-subnet_name           = "subnet01"
-subnet_address_prefix = ["10.0.0.0/24"]
-
 # vm
-hostname       = "testvm01"
-size           = "Standard_F2"
 admin_username = "USERNAME"
 admin_password = "PASSWORD"
-os_disk_sku    = "Standard_LRS"
-publisher      = "Canonical"
-offer          = "UbuntuServer"
-sku            = "18.04-LTS"
-os_tag         = "latest"
-nic_name       = "linux-server-01-nic"
 
 # pip
-pip_name          = "TF-VM-01-pip"
 allocation_method = "Static"
 ```
