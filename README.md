@@ -2,7 +2,7 @@
 
 ### 환경
 - Azure Public Cloud
-- Terraform OSS & Terraform Cloud & Custom Modules
+- Terraform OSS
 ---
 ### 정리
 - [Develop Azure Infra Modules](modules)
@@ -11,15 +11,8 @@
 - [Azure Kubernetes Service](documentation/aks.md)
 ---
 ### Description
-- Develop Azure Infra Modules
 - Azure infra architectures
-- Web 3-tier Architecture
-- AKS with k8s Applications(With Helm)
-    - Nginx-Ingress Controller
-    - Monitoring - Prometheus, Alert Manager, Grafana
-    - metric-server
-    - cluster autoscaler
-    - ArgoCD
----
-### Official Docs
-- [Terraform Registry - AzureRM](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs)
+- Web 3-tier Architecture in azure
+- lifecycle sample
+
+
